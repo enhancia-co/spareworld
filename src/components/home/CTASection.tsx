@@ -37,7 +37,7 @@ const CTASection = () => {
                 size="lg"
                 className="bg-secondary-foreground/10 text-secondary-foreground hover:bg-transparent hover:border-secondary-foreground/30 hover:border"
               >
-                <a href="tel:+966500000000" className="gap-2">
+                <a href="tel:+966543291286" className="gap-2">
                   <Phone className="w-5 h-5" />
                   Call Us Now
                 </a>

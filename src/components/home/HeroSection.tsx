@@ -103,7 +103,7 @@ const HeroSection = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-muted-foreground">Partnering with</p>
-                      <p className="text-2xl font-bold text-primary">20+ Global Brands</p>
+                      <p className="text-2xl font-bold text-primary">10+ Global Brands</p>
                     </div>
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                       <CheckCircle2 className="w-6 h-6 text-primary" />

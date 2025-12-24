@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -6,11 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema, localBusinessSchema } from "@/lib/structuredData";
 import {
   Phone,
   Mail,
   MapPin,
-  MessageCircle,
   Clock,
   Send,
   CheckCircle2,
@@ -20,20 +22,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["+966 50 000 0000"],
+    details: ["+966 543291286"],
     action: "tel:+966500000000",
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@spareworld.sa", "support@spareworld.sa"],
+    details: ["sales@spareworldsa.com"],
     action: "mailto:info@spareworld.sa",
-  },
-  {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    details: ["+966 50 000 0000"],
-    action: "https://wa.me/966500000000",
   },
   {
     icon: Clock,
@@ -52,12 +48,10 @@ const locations = [
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    company: "",
-    subject: "",
     message: "",
   });
 
@@ -67,31 +61,70 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError("");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    axios.defaults.headers.post["Content-Type"] = "application/json";
 
-    toast({
-      title: "Message Sent Successfully!",
-      description: "We'll get back to you within 24 hours.",
-    });
+    try {
+      const response = await axios.post(
+        `https://formsubmit.co/ajax/sales@spareworldsa.com`,
+        formData
+      );
+      if (response.status >= 200 && response.status < 300) {
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+        toast({
+          title: "Message Sent Successfully!",
+          description: "We'll get back to you soon.",
+        });
+      } else {
+        setSubmitError(
+          "There was an error submitting the form. Please try again."
+        );
+      }
+    } catch (error) {
+      setSubmitError(
+        "There was an error submitting the form. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      subject: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      breadcrumbSchema([
+        { name: "Home", url: "https://spareworld.sa/" },
+        { name: "Contact", url: "https://spareworld.sa/contact" },
+      ]),
+      localBusinessSchema,
+      {
+        "@type": "ContactPage",
+        name: "Contact Spare World",
+        description: "Get in touch with Spare World for commercial equipment spare parts. Contact us for quotes, support, and inquiries.",
+        url: "https://spareworld.sa/contact",
+      },
+    ],
   };
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Contact Us - Get Spare Parts Quote | Spare World Saudi Arabia"
+        description="Contact Spare World for commercial equipment spare parts. Reach us in Jeddah, Riyadh, or Khobar. Phone: +966 543291286 | Email: sales@spareworldsa.com"
+        keywords="contact spare world, spare parts quote, commercial equipment supplier contact, Jeddah, Riyadh, Khobar, Saudi Arabia"
+        image="/logo.png"
+        url="https://spareworld.sa/contact"
+        structuredData={structuredData}
+      />
       <Navbar />
       <main>
         {/* Hero */}
@@ -105,7 +138,7 @@ const Contact = () => {
                 Get in Touch with Our Team
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Have questions about our products or services? Need a quote for spare parts? 
+                Have questions about our products or services? Need a quote for spare parts?
                 Our team is here to help you find the right solutions for your equipment needs.
               </p>
             </div>
@@ -234,45 +267,7 @@ const Contact = () => {
                         />
                       </div>
                     </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label
-                          htmlFor="phone"
-                          className="text-sm font-medium text-foreground"
-                        >
-                          Phone Number *
-                        </label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          placeholder="+966 50 000 0000"
-                          required
-                          className="h-12"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label
-                          htmlFor="company"
-                          className="text-sm font-medium text-foreground"
-                        >
-                          Company Name
-                        </label>
-                        <Input
-                          id="company"
-                          name="company"
-                          value={formData.company}
-                          onChange={handleChange}
-                          placeholder="Your Company"
-                          className="h-12"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
+                    {/* <div className="space-y-2">
                       <label
                         htmlFor="subject"
                         className="text-sm font-medium text-foreground"
@@ -288,7 +283,7 @@ const Contact = () => {
                         required
                         className="h-12"
                       />
-                    </div>
+                    </div> */}
 
                     <div className="space-y-2">
                       <label
@@ -309,11 +304,18 @@ const Contact = () => {
                       />
                     </div>
 
+                    {submitError && (
+                      <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
+                        <p className="text-sm text-destructive">{submitError}</p>
+                      </div>
+                    )}
+
                     <Button
                       type="submit"
                       size="lg"
                       className="w-full md:w-auto gap-2"
                       disabled={isSubmitting}
+                      
                     >
                       {isSubmitting ? (
                         <>
@@ -346,8 +348,7 @@ const Contact = () => {
               </p>
             </div>
             <div className="bg-card rounded-2xl p-4 shadow-soft overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7238176.373977459!2d39.47046635!3d24.19573255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e7b33fe7952a41%3A0x5960504bc21ab69b!2sSaudi%20Arabia!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+              <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3712.5208355983086!2d39.17876007564276!3d21.48730997187056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDI5JzE0LjMiTiAzOcKwMTAnNTIuOCJF!5e0!3m2!1sen!2sin!4v1766598065096!5m2!1sen!2sin"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -381,9 +382,9 @@ const Contact = () => {
                 size="lg"
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
               >
-                <a href="tel:+966500000000" className="gap-2">
+                <a href="tel:+966543291286" className="gap-2">
                   <Phone className="w-5 h-5" />
-                  +966 50 000 0000
+                  +966 543291286
                 </a>
               </Button>
             </div>

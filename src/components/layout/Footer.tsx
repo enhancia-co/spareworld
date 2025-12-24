@@ -34,7 +34,9 @@ const Footer = () => {
                 <Facebook className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/spare-world-sa/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary transition-colors"
                 aria-label="LinkedIn"
               >
@@ -112,16 +114,17 @@ const Footer = () => {
                   href="tel:+966500000000"
                   className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors"
                 >
-                  +966 50 000 0000
+                  +966 543291286
+
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
                 <a
-                  href="mailto:info@spareworld.sa"
+                  href="mailto:sales@spareworldsa.com"
                   className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors"
                 >
-                  info@spareworld.sa
+                  sales@spareworldsa.com
                 </a>
               </li>
             </ul>

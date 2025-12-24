@@ -1,0 +1,28 @@
+{
+  "name": "Spare World - Commercial Equipment Spare Parts",
+  "short_name": "Spare World",
+  "description": "Trusted supplier of commercial kitchen and laundry equipment spare parts in Saudi Arabia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "shopping"],
+  "lang": "en",
+  "dir": "ltr"
+}
+

@@ -3,6 +3,8 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChefHat, WashingMachine, Flame, Wind, ArrowRight, CheckCircle2 } from "lucide-react";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema } from "@/lib/structuredData";
 
 const categories = [
   {
@@ -84,8 +86,32 @@ const categories = [
 ];
 
 const Products = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      breadcrumbSchema([
+        { name: "Home", url: "https://spareworld.sa/" },
+        { name: "Products", url: "https://spareworld.sa/products" },
+      ]),
+      {
+        "@type": "CollectionPage",
+        name: "Commercial Equipment Spare Parts",
+        description: "Quality spare parts for commercial kitchen, laundry, boiler, and HVAC equipment",
+        url: "https://spareworld.sa/products",
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Commercial Equipment Spare Parts - Kitchen, Laundry, Boiler & HVAC | Spare World"
+        description="Explore our comprehensive range of genuine spare parts for commercial kitchen, laundry, boiler, and HVAC equipment. Quality-assured components from authorized distributors. Serving Jeddah, Riyadh, and Khobar."
+        keywords="commercial kitchen spare parts, laundry equipment parts, boiler spare parts, HVAC parts, commercial oven parts, washer parts, dryer components, Saudi Arabia, Jeddah, Riyadh, Khobar"
+        image="/logo.png"
+        url="https://spareworld.sa/products"
+        structuredData={structuredData}
+      />
       <Navbar />
       <main>
         {/* Hero */}

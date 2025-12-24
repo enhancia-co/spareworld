@@ -15,6 +15,8 @@ import {
   Users,
   Award,
 } from "lucide-react";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema, serviceSchema } from "@/lib/structuredData";
 
 const services = [
   {
@@ -110,8 +112,30 @@ const whyChooseUs = [
 ];
 
 const Services = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      breadcrumbSchema([
+        { name: "Home", url: "https://spareworld.sa/" },
+        { name: "Services", url: "https://spareworld.sa/services" },
+      ]),
+      serviceSchema(
+        "Commercial Equipment Spare Parts Services",
+        "Professional installation, fast delivery, quality assurance, technical support, preventive maintenance, and emergency service for commercial equipment spare parts"
+      ),
+    ],
+  };
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Commercial Equipment Services - Installation, Delivery & Support | Spare World"
+        description="Comprehensive equipment services including professional installation, fast delivery, quality assurance, 24/7 technical support, preventive maintenance, and emergency service. Serving Jeddah, Riyadh, and Khobar."
+        keywords="equipment installation, spare parts delivery, technical support, preventive maintenance, emergency service, commercial equipment repair, Saudi Arabia"
+        image="/logo.png"
+        url="https://spareworld.sa/services"
+        structuredData={structuredData}
+      />
       <Navbar />
       <main>
         {/* Hero */}

@@ -1,6 +1,7 @@
 const WhatsAppFloatingButton = () => {
-  const whatsappNumber = "966500000000";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  const whatsappNumber = "966543291286";
+  const defaultMessage = "Hello, I'm interested in your spare parts services. Can I get more info about products?";
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`;
 
   return (
     <a

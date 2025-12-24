@@ -11,7 +11,7 @@ const stats = [
   },
   {
     icon: Award,
-    value: 20,
+    value: 10,
     suffix: "+",
     label: "Partner Brands",
     description: "Trusted global manufacturers",

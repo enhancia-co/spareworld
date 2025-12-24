@@ -13,6 +13,8 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema, organizationSchema } from "@/lib/structuredData";
 
 const values = [
   {
@@ -53,8 +55,33 @@ const locations = [
 ];
 
 const About = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      breadcrumbSchema([
+        { name: "Home", url: "https://spareworld.sa/" },
+        { name: "About Us", url: "https://spareworld.sa/about" },
+      ]),
+      organizationSchema,
+      {
+        "@type": "AboutPage",
+        name: "About Spare World",
+        description: "Learn about Spare World, your trusted partner for commercial equipment spare parts in Saudi Arabia",
+        url: "https://spareworld.sa/about",
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen">
+      <SEO
+        title="About Us - Your Trusted Spare Parts Partner in Saudi Arabia | Spare World"
+        description="Spare World is a premier supplier of commercial kitchen and laundry equipment spare parts in Saudi Arabia. Learn about our mission, values, and commitment to quality. Serving Jeddah, Riyadh, and Khobar."
+        keywords="about spare world, commercial equipment supplier, spare parts company Saudi Arabia, trusted supplier, quality spare parts"
+        image="/logo.png"
+        url="https://spareworld.sa/about"
+        structuredData={structuredData}
+      />
       <Navbar />
       <main>
         {/* Hero */}
@@ -99,7 +126,7 @@ const About = () => {
                     <span className="text-sm text-muted-foreground">Years of Experience</span>
                   </div>
                   <div className="text-center p-6 bg-background rounded-2xl">
-                    <span className="text-4xl font-bold text-primary block mb-2">20+</span>
+                    <span className="text-4xl font-bold text-primary block mb-2">10+</span>
                     <span className="text-sm text-muted-foreground">Partner Brands</span>
                   </div>
                   <div className="text-center p-6 bg-background rounded-2xl">
@@ -265,7 +292,7 @@ const About = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary">Trusted Partner</h4>
-                      <p className="text-sm text-muted-foreground">Partnering with 20+ global brands</p>
+                      <p className="text-sm text-muted-foreground">Partnering with 10+ global brands</p>
                     </div>
                   </div>
                 </div>
