@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import vision2030 from "../../../src/assets/common/vision-2030.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -98,7 +99,7 @@ const Navbar = () => {
             >
               <div className="">
                 <img
-                  src="/src/assets/common/vision-2030.png"
+                  src={vision2030}
                   alt="Saudi Vision 2030"
                   className="h-10 w-auto object-contain"
                 />
@@ -125,7 +126,7 @@ const Navbar = () => {
 
           {/* Vision 2030 Badge */}
             <a
-              href="https://www.vision2030.gov.sa/"
+              // href="https://www.vision2030.gov.sa/"
               target="_blank"
               rel="noopener noreferrer"
               className="max-[410px]:hidden hover:opacity-90 transition-opacity"

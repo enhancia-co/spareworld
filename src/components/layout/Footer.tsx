@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
+import vision2030 from "../../../src/assets/common/vision-2030.png";
 
 const Footer = () => {
   return (
@@ -73,7 +74,7 @@ const Footer = () => {
                 >
                   <div className="bg-white rounded-lg p-1.5 sm:p-2">
                     <img
-                      src="/src/assets/common/vision-2030.png"
+                      src={vision2030}
                       alt="Saudi Vision 2030"
                       className="h-5 sm:h-6 w-auto object-contain"
                     />
