@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import SEO from "@/components/SEO";
 import { breadcrumbSchema, localBusinessSchema } from "@/lib/structuredData";
 import {
@@ -128,16 +127,16 @@ const Contact = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-16 bg-surface">
+        <section className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-14 lg:pb-16 bg-surface">
           <div className="container-max mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-primary/10 text-primary text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4">
                 Contact Us
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-6">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-4 sm:mb-6">
                 Get in Touch with Our Team
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
                 Have questions about our products or services? Need a quote for spare parts?
                 Our team is here to help you find the right solutions for your equipment needs.
               </p>
@@ -148,28 +147,28 @@ const Contact = () => {
         {/* Contact Form & Info */}
         <section className="section-padding bg-background">
           <div className="container-max mx-auto">
-            <div className="grid lg:grid-cols-3 gap-12">
+            <div className="grid lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
               {/* Contact Info */}
-              <div className="lg:col-span-1 space-y-6">
-                <h2 className="text-2xl font-bold text-secondary mb-6">
+              <div className="lg:col-span-1 space-y-4 sm:space-y-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-secondary mb-4 sm:mb-6">
                   Contact Information
                 </h2>
 
                 {contactInfo.map((item) => {
                   const Icon = item.icon;
                   const content = (
-                    <div className="flex items-start gap-4 p-4 bg-card rounded-xl card-hover">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                        <Icon className="w-6 h-6 text-primary" />
+                    <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-card rounded-xl card-hover">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-secondary mb-1">
+                        <h3 className="font-semibold text-secondary mb-1 text-sm sm:text-base">
                           {item.title}
                         </h3>
                         {item.details.map((detail) => (
                           <p
                             key={detail}
-                            className="text-sm text-muted-foreground"
+                            className="text-xs sm:text-sm text-muted-foreground"
                           >
                             {detail}
                           </p>
@@ -195,7 +194,7 @@ const Contact = () => {
 
                 {/* Service Locations */}
                 <div className="pt-6">
-                  <h3 className="text-lg font-semibold text-secondary mb-4">
+                  <h3 className="text-base sm:text-lg font-semibold text-secondary mb-3 sm:mb-4">
                     Service Locations
                   </h3>
                   <div className="space-y-3">
@@ -204,9 +203,9 @@ const Contact = () => {
                         key={location.city}
                         className="flex items-center gap-3"
                       >
-                        <MapPin className="w-5 h-5 text-primary shrink-0" />
+                        <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary shrink-0" />
                         <div>
-                          <span className="font-medium text-foreground">
+                          <span className="font-medium text-foreground text-sm sm:text-base">
                             {location.city}
                           </span>
                           <span className="text-sm text-muted-foreground ml-2">
@@ -221,20 +220,20 @@ const Contact = () => {
 
               {/* Contact Form */}
               <div className="lg:col-span-2">
-                <div className="bg-card rounded-2xl p-8 shadow-soft">
-                  <h2 className="text-2xl font-bold text-secondary mb-2">
+                <div className="bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-soft">
+                  <h2 className="text-xl sm:text-2xl font-bold text-secondary mb-2">
                     Send Us a Message
                   </h2>
-                  <p className="text-muted-foreground mb-8">
+                  <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base">
                     Fill out the form below and we'll get back to you within 24 hours.
                   </p>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label
                           htmlFor="name"
-                          className="text-sm font-medium text-foreground"
+                          className="text-xs sm:text-sm font-medium text-foreground"
                         >
                           Full Name *
                         </label>
@@ -245,13 +244,13 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="John Doe"
                           required
-                          className="h-12"
+                          className="h-10 sm:h-12 text-sm sm:text-base"
                         />
                       </div>
                       <div className="space-y-2">
                         <label
                           htmlFor="email"
-                          className="text-sm font-medium text-foreground"
+                          className="text-xs sm:text-sm font-medium text-foreground"
                         >
                           Email Address *
                         </label>
@@ -263,7 +262,7 @@ const Contact = () => {
                           onChange={handleChange}
                           placeholder="john@company.com"
                           required
-                          className="h-12"
+                          className="h-10 sm:h-12 text-sm sm:text-base"
                         />
                       </div>
                     </div>
@@ -288,7 +287,7 @@ const Contact = () => {
                     <div className="space-y-2">
                       <label
                         htmlFor="message"
-                        className="text-sm font-medium text-foreground"
+                        className="text-xs sm:text-sm font-medium text-foreground"
                       >
                         Message *
                       </label>
@@ -299,8 +298,8 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="Tell us about your spare parts requirements..."
                         required
-                        rows={5}
-                        className="resize-none"
+                        rows={4}
+                        className="resize-none text-sm sm:text-base"
                       />
                     </div>
 
@@ -312,10 +311,10 @@ const Contact = () => {
 
                     <Button
                       type="submit"
-                      size="lg"
-                      className="w-full md:w-auto gap-2"
+                      size="sm"
+                      className="w-full sm:w-auto gap-2 text-sm sm:text-base"
                       disabled={isSubmitting}
-                      
+
                     >
                       {isSubmitting ? (
                         <>
@@ -325,7 +324,7 @@ const Contact = () => {
                       ) : (
                         <>
                           Send Message
-                          <Send className="w-4 h-4" />
+                          <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </>
                       )}
                     </Button>
@@ -339,18 +338,18 @@ const Contact = () => {
         {/* Map Section */}
         <section className="section-padding bg-surface">
           <div className="container-max mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-secondary mb-4">
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-secondary mb-3 sm:mb-4">
                 Our Coverage Area
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-sm sm:text-base">
                 Serving businesses across Saudi Arabia's major cities
               </p>
             </div>
-            <div className="bg-card rounded-2xl p-4 shadow-soft overflow-hidden">
+            <div className="bg-card rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-soft overflow-hidden">
               <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3712.5208355983086!2d39.17876007564276!3d21.48730997187056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDI5JzE0LjMiTiAzOcKwMTAnNTIuOCJF!5e0!3m2!1sen!2sin!4v1766598065096!5m2!1sen!2sin"
                 width="100%"
-                height="400"
+                height="300"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
@@ -367,23 +366,23 @@ const Contact = () => {
           <div className="container-max mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-                  <CheckCircle2 className="w-6 h-6 text-primary-foreground" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                 </div>
                 <div className="text-primary-foreground">
-                  <h3 className="font-semibold text-lg">Need Urgent Support?</h3>
-                  <p className="text-primary-foreground/80 text-sm">
+                  <h3 className="font-semibold text-base sm:text-lg">Need Urgent Support?</h3>
+                  <p className="text-primary-foreground/80 text-xs sm:text-sm">
                     Call us directly for immediate assistance
                   </p>
                 </div>
               </div>
               <Button
                 asChild
-                size="lg"
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                size="sm"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 text-sm sm:text-base"
               >
                 <a href="tel:+966543291286" className="gap-2">
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   +966 543291286
                 </a>
               </Button>
@@ -392,7 +391,6 @@ const Contact = () => {
         </section>
       </main>
       <Footer />
-      <WhatsAppFloatingButton />
     </div>
   );
 };

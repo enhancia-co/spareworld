@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppFloatingButton from "./components/WhatsAppFloatingButton";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ScrollToTop />
+        <WhatsAppFloatingButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

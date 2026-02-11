@@ -1,11 +1,12 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
+import BrandSection from "@/components/home/BrandSection";
+import ClientsSection from "@/components/home/ClientsSection";
 import StatsSection from "@/components/home/StatsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import ProductsSection from "@/components/home/ProductsSection";
 import CTASection from "@/components/home/CTASection";
-import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import SEO from "@/components/SEO";
 import { localBusinessSchema, websiteSchema } from "@/lib/structuredData";
 
@@ -27,13 +28,14 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <BrandSection />
+        <ClientsSection />
         <StatsSection />
         <ServicesSection />
         <ProductsSection />
         <CTASection />
       </main>
       <Footer />
-      <WhatsAppFloatingButton />
     </div>
   );
 };

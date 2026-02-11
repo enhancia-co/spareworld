@@ -13,7 +13,7 @@ const services = [
     icon: Truck,
     title: "Fast Delivery",
     description:
-      "Quick and reliable delivery across Jeddah, Riyadh, and Khobar with real-time tracking and secure handling.",
+      "Quick and reliable delivery across Jeddah, Riyadh, and Khobar with same-day service and secure handling.",
   },
   {
     icon: Shield,
@@ -34,35 +34,35 @@ const ServicesSection = () => {
     <section className="section-padding bg-background">
       <div className="container-max mx-auto">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 lg:mb-16">
+          <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-primary/10 text-primary text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4">
             Our Services
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-secondary mb-3 sm:mb-4">
             Comprehensive Solutions for Your Equipment
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground">
             From supply to installation, we provide end-to-end services ensuring your commercial equipment operates at peak efficiency.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.title}
-                className="group bg-card rounded-2xl p-6 card-hover border border-transparent hover:border-primary/20"
+                className="group bg-card rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 card-hover border border-transparent hover:border-primary/20"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-colors duration-300">
-                  <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center mb-4 sm:mb-5 group-hover:bg-primary transition-colors duration-300">
+                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                 </div>
-                <h3 className="text-lg font-semibold text-secondary mb-3">
+                <h3 className="text-base sm:text-lg font-semibold text-secondary mb-2 sm:mb-3">
                   {service.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -71,8 +71,8 @@ const ServicesSection = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Button asChild size="lg" variant="outline">
+        <div className="text-center mt-8 sm:mt-10 lg:mt-12">
+          <Button asChild size="sm" variant="outline" className="w-full sm:w-auto text-sm sm:text-base">
             <Link to="/services" className="gap-2">
               View All Services
               <ArrowRight className="w-4 h-4" />

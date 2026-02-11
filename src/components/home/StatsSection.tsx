@@ -79,7 +79,7 @@ const CountUp = ({ end, suffix, duration = 2000 }: { end: number; suffix: string
 
 const StatsSection = () => {
   return (
-    <section className="py-16 bg-secondary relative overflow-hidden">
+    <section className="section-padding bg-secondary relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary rounded-full blur-3xl" />
@@ -87,7 +87,7 @@ const StatsSection = () => {
       </div>
 
       <div className="container-max mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -96,16 +96,16 @@ const StatsSection = () => {
                 className="text-center group"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/20 mb-4 group-hover:bg-primary transition-colors duration-300">
-                  <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-primary/20 mb-3 sm:mb-4 group-hover:bg-primary transition-colors duration-300">
+                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-secondary-foreground mb-1">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-secondary-foreground mb-1">
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-sm font-semibold text-secondary-foreground mb-1">
+                <div className="text-xs sm:text-sm font-semibold text-secondary-foreground mb-1">
                   {stat.label}
                 </div>
-                <div className="text-xs text-secondary-foreground/60 hidden sm:block">
+                <div className="text-[10px] sm:text-xs text-secondary-foreground/60">
                   {stat.description}
                 </div>
               </div>
